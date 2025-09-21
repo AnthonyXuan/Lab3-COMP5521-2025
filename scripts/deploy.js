@@ -15,9 +15,8 @@ async function main() {
   const contractAddress = await token.getAddress();
   console.log(`MySimpleToken deployed to: ${contractAddress}`);
 
-  // add code to wait for some block confirmations if needed
-
-  await token.deployTransaction.wait(6); // wait for 6 confirmations
+  // Wait for a few block confirmations to ensure Etherscan has indexed the contract
+  await token.deploymentTransaction().wait(5);
 
   // Verify the contract on Etherscan
     console.log("Verifying contract on Etherscan...");
